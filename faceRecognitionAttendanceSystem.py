@@ -14,7 +14,7 @@ GUI.title("Face Recognition Attendance System")
 def add_student_record(roll_no,sname,course):
  img = str(roll_no)
  roll = int(roll_no)
- conn = sql.connect(host="localhost",user="root",passwd="Vishal@2702",database="project")
+ conn = sql.connect(host="localhost",user="root",passwd="passwd",database="project")
  cur = conn.cursor()
  query = """insert into student_record(name,course,roll_no,image) values(%s,%s,%s,%s)"""
  cur.execute(query,(sname,course,roll,img+".jpg"))
@@ -30,7 +30,7 @@ def add_student_record(roll_no,sname,course):
   cv2.imshow("webcam - Add Student Face", frame)
   k = cv2.waitKey(1)
   if k%256 == 32: # SPACE pressed 
-   cv2.imwrite(os.path.join('/home/vishal/Desktop/sem3_project/known_pic',img+".jpg"), frame)
+   cv2.imwrite(os.path.join('/user/vishal/Desktop/sem3_project/known_pic',img+".jpg"), frame)
    print("saved")
    break
  cam.release()
@@ -48,7 +48,7 @@ def compare(sub_code):
   cv2.imshow("webcam - take attendance", frame)
   k = cv2.waitKey(1)
   if k%256 == 32:# SPACE pressed
-   cv2.imwrite(os.path.join('/home/vishal/Desktop/sem3_project/temporary_pic',"random.jpg"), frame)
+   cv2.imwrite(os.path.join('/user/vishal/Desktop/sem3_project/temporary_pic',"random.jpg"), frame)
    print("saved")
    break
  cam.release()
